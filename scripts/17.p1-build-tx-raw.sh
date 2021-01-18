@@ -35,7 +35,7 @@ echo keyDeposit: $keyDeposit
 cardano-cli transaction build-raw \
     ${tx_in} \
     --tx-out $(cat payment.addr)+0 \
-    --invalid-hereafter $(( ${currentSlot} + 100000)) \
+    --invalid-hereafter $(( ${currentSlot} + 10000)) \
     --fee 0 \
     --out-file tx.tmp \
     --allegra-era \
