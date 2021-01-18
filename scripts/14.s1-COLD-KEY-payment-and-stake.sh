@@ -35,5 +35,3 @@ cardano-cli address build \
 
 toproducer.sh payment.addr ada/cardano-node/
 toproducer.sh stake.addr ada/cardano-node/
-
-cd - > /dev/null

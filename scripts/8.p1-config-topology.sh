@@ -11,4 +11,3 @@ cat > $NODE_HOME/${NODE_CONFIG}-topology.json << EOF
     ]
   }
 EOF
-

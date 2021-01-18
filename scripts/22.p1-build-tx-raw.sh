@@ -68,5 +68,3 @@ cardano-cli transaction build-raw \
     --certificate-file deleg.cert \
     --allegra-era \
     --out-file tx.raw
-
-cd - > /dev/null

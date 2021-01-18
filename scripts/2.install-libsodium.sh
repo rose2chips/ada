@@ -11,5 +11,3 @@ git checkout 66f017f1
 ./configure
 make
 sudo make install
-
-cd - > /dev/null

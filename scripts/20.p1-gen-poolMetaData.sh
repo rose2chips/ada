@@ -15,5 +15,3 @@ cardano-cli stake-pool metadata-hash --pool-metadata-file poolMetaData.json > po
 
 minPoolCost=$(cat $NODE_HOME/params.json | jq -r .minPoolCost)
 echo minPoolCost: ${minPoolCost}
-
-cd - > /dev/null

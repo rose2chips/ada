@@ -6,5 +6,3 @@ cardano-cli query utxo \
     --address $(cat payment.addr) \
     --allegra-era \
     --mainnet
-
-cd - > /dev/null

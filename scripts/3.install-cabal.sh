@@ -11,5 +11,3 @@ rm cabal.sig
 mkdir -p $HOME/ada/bin
 mv cabal $HOME/ada/bin/
 #sudo mv cabal /usr/local/bin/
-
-cd - > /dev/null

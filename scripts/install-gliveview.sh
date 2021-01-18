@@ -13,5 +13,3 @@ sed -i env \
     -e "s/\#SOCKET=\"\${CNODE_HOME}\/sockets\/node0.socket\"/SOCKET=\"\${NODE_HOME}\/db\/socket\"/g"
 
 #./gLiveView.sh
-
-cd - > /dev/null

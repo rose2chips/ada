@@ -6,5 +6,3 @@ cardano-cli stake-pool id --cold-verification-key-file node.vkey --output-format
 cat stakepoolid.txt
 
 toproducer.sh stakepoolid.txt ada/cardano-node
-
-cd - > /dev/null

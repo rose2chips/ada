@@ -19,5 +19,3 @@ sudo make install
 cabal update
 cabal -V
 ghc -V
-
-cd ../..

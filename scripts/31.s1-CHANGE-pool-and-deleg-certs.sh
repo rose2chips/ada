@@ -24,5 +24,3 @@ cardano-cli stake-address delegation-certificate \
 
 toproducer.sh pool.cert ada/cardano-node
 toproducer.sh deleg.cert ada/cardano-node
-
-cd - > /dev/null
