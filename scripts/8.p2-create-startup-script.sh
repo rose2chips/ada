@@ -13,3 +13,4 @@ cardano-node run --topology \${TOPOLOGY} --database-path \${DB_PATH} --socket-pa
 EOF
 
 chmod a+x $NODE_HOME/startBlockProducingNode.sh
+
