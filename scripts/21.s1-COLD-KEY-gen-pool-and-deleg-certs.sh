@@ -10,14 +10,14 @@ cardano-cli stake-pool registration-certificate \
     --cold-verification-key-file node.vkey \
     --vrf-verification-key-file vrf.vkey \
     --pool-pledge 100000000 \
-    --pool-cost 345000000 \
+    --pool-cost 340000000 \
     --pool-margin 0.15 \
     --pool-reward-account-verification-key-file stake.vkey \
     --pool-owner-stake-verification-key-file stake.vkey \
     --mainnet \
     --single-host-pool-relay <HOST NAME> \
     --pool-relay-port 6000 \
-    --metadata-url https://github.com/rose2chips/ada/blob/main/poolMetaData.json \
+    --metadata-url https://git.io/JtLI3
     --metadata-hash $(cat poolMetaDataHash.txt) \
     --out-file pool.cert
 
