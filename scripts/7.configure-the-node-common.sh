@@ -14,4 +14,4 @@ sed -i ${NODE_CONFIG}-config.json \
 echo export CARDANO_NODE_SOCKET_PATH="$NODE_HOME/db/socket" >> $HOME/.bashrc
 source $HOME/.bashrc
 
-cd -
+cd - > /dev/null

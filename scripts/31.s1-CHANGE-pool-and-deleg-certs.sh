@@ -11,7 +11,7 @@ cardano-cli stake-pool registration-certificate \
     --pool-reward-account-verification-key-file stake.vkey \
     --pool-owner-stake-verification-key-file stake.vkey \
     --mainnet \
-    --single-host-pool-relay rnode11.mayhoney.co.kr \
+    --single-host-pool-relay <HOST NAME> \
     --pool-relay-port 6000 \
     --metadata-url https://github.com/rose2chips/ada/blob/main/poolMetaData.json \
     --metadata-hash $(cat poolMetaDataHash.txt) \
@@ -24,3 +24,5 @@ cardano-cli stake-address delegation-certificate \
 
 toproducer.sh pool.cert ada/cardano-node
 toproducer.sh deleg.cert ada/cardano-node
+
+cd - > /dev/null

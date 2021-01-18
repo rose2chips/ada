@@ -6,4 +6,4 @@ cardano-cli transaction submit \
     --tx-file tx.signed \
     --mainnet
 
-cd -
+cd - > /dev/null

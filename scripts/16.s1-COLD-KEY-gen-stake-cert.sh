@@ -11,4 +11,4 @@ cardano-cli stake-address registration-certificate \
 
 toproducer.sh stake.cert ada/cardano-node/
 
-cd -
+cd - > /dev/null

@@ -17,4 +17,4 @@ cardano-cli transaction sign \
 
 toproducer.sh tx.signed ada/cardano-node
 
-cd -
+cd - > /dev/null

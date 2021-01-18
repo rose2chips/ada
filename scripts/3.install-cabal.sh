@@ -12,4 +12,4 @@ mkdir -p $HOME/ada/bin
 mv cabal $HOME/ada/bin/
 #sudo mv cabal /usr/local/bin/
 
-cd -
+cd - > /dev/null

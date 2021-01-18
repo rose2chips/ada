@@ -66,4 +66,4 @@ cardano-cli transaction build-raw \
     --allegra-era \
     --out-file tx.raw
 
-cd -
+cd - > /dev/null

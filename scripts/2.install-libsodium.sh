@@ -12,4 +12,4 @@ git checkout 66f017f1
 make
 sudo make install
 
-cd -
+cd - > /dev/null

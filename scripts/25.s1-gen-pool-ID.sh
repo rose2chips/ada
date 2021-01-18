@@ -7,4 +7,4 @@ cat stakepoolid.txt
 
 toproducer.sh stakepoolid.txt ada/cardano-node
 
-cd -
+cd - > /dev/null

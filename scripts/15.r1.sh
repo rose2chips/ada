@@ -7,4 +7,4 @@ cardano-cli query protocol-parameters \
     --allegra-era \
     --out-file params.json
 
-cd -
+cd - > /dev/null

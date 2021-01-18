@@ -7,4 +7,4 @@ cardano-cli query utxo \
     --allegra-era \
     --mainnet
 
-cd -
+cd - > /dev/null

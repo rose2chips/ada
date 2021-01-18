@@ -14,4 +14,4 @@ sed -i env \
 
 #./gLiveView.sh
 
-cd -
+cd - > /dev/null

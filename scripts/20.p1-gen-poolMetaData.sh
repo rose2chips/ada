@@ -4,10 +4,10 @@ cd $NODE_HOME
 
 cat > poolMetaData.json << EOF
 {
-    "name": "MayHoney Private",
-    "description": "The private pool of MayHoney Lab.",
-    "ticker": "MHL01",
-    "homepage": "http://mayhoney.co.kr"
+    "name": "<NAME>",
+    "description": ".{,255}"
+    "ticker": "[A-Z0-9]{3,5}",
+    "homepage": ""
 }
 EOF
 
@@ -16,4 +16,4 @@ cardano-cli stake-pool metadata-hash --pool-metadata-file poolMetaData.json > po
 minPoolCost=$(cat $NODE_HOME/params.json | jq -r .minPoolCost)
 echo minPoolCost: ${minPoolCost}
 
-cd -
+cd - > /dev/null

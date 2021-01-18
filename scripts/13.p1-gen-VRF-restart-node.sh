@@ -29,4 +29,4 @@ sudo systemctl start cardano-node
 # Monitor with gLiveView
 ./gLiveView.sh
 
-cd -
+cd - > /dev/null
