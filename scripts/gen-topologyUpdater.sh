@@ -7,15 +7,15 @@ cat > $NODE_HOME/topologyUpdater.sh << EOF
 #!/bin/bash
 # shellcheck disable=SC2086,SC2034
  
-USERNAME=$(whoami)
+#USERNAME=$(whoami)
 CNODE_PORT=6000 # must match your relay node port as set in the startup command
 CNODE_HOSTNAME="CHANGE ME"  # optional. must resolve to the IP you are requesting from
 #CNODE_BIN="/usr/local/bin"
 #CNODE_HOME=$NODE_HOME
 #CNODE_LOG_DIR="\${CNODE_HOME}/logs"
 #GENESIS_JSON="\${CNODE_HOME}/${NODE_CONFIG}-shelley-genesis.json"
-CNODE_LOG_DIR="\${NODE_HOME}/logs"
-GENESIS_JSON="\${NODE_HOME}/${NODE_CONFIG}-shelley-genesis.json"
+CNODE_LOG_DIR="${NODE_HOME}/logs"
+GENESIS_JSON="${NODE_HOME}/${NODE_CONFIG}-shelley-genesis.json"
 NETWORKID=\$(jq -r .networkId \$GENESIS_JSON)
 CNODE_VALENCY=1   # optional for multi-IP hostnames
 NWMAGIC=\$(jq -r .networkMagic < \$GENESIS_JSON)
@@ -23,8 +23,8 @@ NWMAGIC=\$(jq -r .networkMagic < \$GENESIS_JSON)
 [[ "\${NWMAGIC}" = "764824073" ]] && NETWORK_IDENTIFIER="--mainnet" || NETWORK_IDENTIFIER="--testnet-magic \${NWMAGIC}"
  
 #export PATH="\${CNODE_BIN}:\${PATH}"
-##export CARDANO_NODE_SOCKET_PATH="\${CNODE_HOME}/db/socket"
-#export CARDANO_NODE_SOCKET_PATH="\${NODE_HOME}/db/socket"
+#export CARDANO_NODE_SOCKET_PATH="\${CNODE_HOME}/db/socket"
+export CARDANO_NODE_SOCKET_PATH="${NODE_HOME}/db/socket"
  
 blockNo=\$(/usr/local/bin/cardano-cli query tip \${NETWORK_IDENTIFIER} | jq -r .blockNo )
  
@@ -49,8 +49,8 @@ chmod +x $NODE_HOME/topologyUpdater.sh
 
 # Add a crontab job to automatically run topologyUpdater.sh
 # every hour on the 22nd minute.
-cat > $NODE_HOME/crontab-fragment.txt << EOF
-22 * * * * ${NODE_HOME}/topologyUpdater.sh
+cat > crontab-fragment.txt << EOF
+36 * * * * ${NODE_HOME}/topologyUpdater.sh
 EOF
 
 #crontab -l | cat - crontab-fragment.txt >crontab.txt && crontab crontab.txt

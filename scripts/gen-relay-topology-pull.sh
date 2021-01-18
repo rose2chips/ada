@@ -15,7 +15,7 @@ chmod +x $NODE_HOME/relay-topology-pull.sh
 
 # Add a crontab job to automatically run relay-topology-pull.sh
 cat > crontab-fragment.txt << EOF
-52 17 * * * ${NODE_HOME}/relay-topology-pull.sh
+50 23 * * * ${NODE_HOME}/relay-topology-pull.sh
 EOF
 
 #crontab -l | cat - crontab-fragment.txt >crontab.txt && crontab crontab.txt
@@ -31,6 +31,6 @@ chmod +x $NODE_HOME/restart-node.sh
 
 # Add a crontab job to automatically run relay-topology-pull.sh
 cat > crontab-sudo-fragment.txt << EOF
-00 18 * * * ${NODE_HOME}/restart-node.sh
+00 00 * * * ${NODE_HOME}/restart-node.sh
 EOF
 sudo crontab -l | cat - crontab-sudo-fragment.txt > crontab-sudo.txt
