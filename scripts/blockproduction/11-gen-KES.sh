@@ -1,6 +1,19 @@
 #!/bin/bash
 
-#pushd +1
+cd $NODE_HOME
+
+if ! [ -d backup ]; then
+  mkdir backup
+fi
+
+mv kes.vkey backup/
+mv kes.skey backup/
+mv node.cert backup/
+
+cardano-cli node key-gen-KES \
+    --verification-key-file kes.vkey \
+    --signing-key-file kes.skey
+
 slotsPerKESPeriod=$(cat $NODE_HOME/${NODE_CONFIG}-shelley-genesis.json | jq -r '.slotsPerKESPeriod')
 echo slotsPerKESPeriod: ${slotsPerKESPeriod}
 
@@ -8,20 +21,23 @@ slotNo=$(cardano-cli query tip --mainnet | jq -r '.slotNo')
 echo slotNo: ${slotNo}
 
 kesPeriod=$((${slotNo} / ${slotsPerKESPeriod}))
-#echo kesPeriod: ${kesPeriod}
 startKesPeriod=${kesPeriod}
 echo startKesPeriod: ${startKesPeriod}
-#echo ${startKesPeriod} > $NODE_HOME/startKesPeriod
 
-cat > $HOME/ada/setup/12.s2-gen-op-cert.sh << EOF
-#pushd $HOME/cold-keys
+cat > $NODE_HOME/gen-op-cert.sh << EOF
 cd \$HOME/cold-keys
 
-rm -f kes.vkey
-rm -f kes.skey
+if ! [ -d backup ]; then
+  mkdir backup
+fi
 
-fromproducer.sh ada/cardano-node/kes.vkey
-fromproducer.sh ada/cardano-node/kes.skey
+mv kes.vkey backup/
+mv kes.skey backup/
+mv node.cert backup/
+
+fromnode.sh $NODE_HOME/kes.vkey
+fromnode.sh $NODE_HOME/kes.skey
+fromnode.sh $NODE_HOME/gen-op-cert.sh
 
 cardano-cli node issue-op-cert \\
     --kes-verification-key-file kes.vkey \\
@@ -30,11 +46,10 @@ cardano-cli node issue-op-cert \\
     --kes-period ${startKesPeriod} \\
     --out-file node.cert
 
-toproducer.sh node.cert ada/cardano-node/
+tonode.sh node.cert $NODE_HOME/
 
 echo "Be sure to BACK UP ALL your KEYS to another secure storage device."
 echo "Make MULTIPLE COPIES."
 EOF
 
-chmod a+x $HOME/ada/setup/12.s2-gen-op-cert.sh
-
+chmod a+x $NODE_HOME/gen-op-cert.sh

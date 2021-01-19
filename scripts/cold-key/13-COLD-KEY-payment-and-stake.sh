@@ -33,5 +33,5 @@ cardano-cli address build \
     --out-file payment.addr \
     --mainnet
 
-toproducer.sh payment.addr ada/cardano-node/
-toproducer.sh stake.addr ada/cardano-node/
+tonode.sh payment.addr $NODE_HOME/
+tonode.sh stake.addr $NODE_HOME/

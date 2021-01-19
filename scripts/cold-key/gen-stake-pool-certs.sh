@@ -13,14 +13,14 @@ cardano-cli stake-pool registration-certificate \
     --mainnet \
     --single-host-pool-relay <HOST NAME> \
     --pool-relay-port 6000 \
-    --metadata-url https://git.io/JtLI3 \
+    --metadata-url <URL> \
     --metadata-hash $(cat poolMetaDataHash.txt) \
     --out-file pool.cert
 
 cardano-cli stake-address delegation-certificate \
     --stake-verification-key-file stake.vkey \
-    --cold-verification-key-file $HOME/cold-keys/node.vkey \
+    --cold-verification-key-file node.vkey \
     --out-file deleg.cert
 
-toproducer.sh pool.cert ada/cardano-node
-toproducer.sh deleg.cert ada/cardano-node
+tonode.sh pool.cert $NODE_HOME/
+tonode.sh deleg.cert $NODE_HOME/

@@ -1,16 +1,8 @@
 #!/bin/bash
 
-cd $NODE_HOME
-
-cardano-cli node key-gen-VRF \
-    --verification-key-file vrf.vkey \
-    --signing-key-file vrf.skey
-
-chmod 400 vrf.skey
-
 sudo systemctl stop cardano-node
 
-cat > $NODE_HOME/startBlockProducingNode.sh << EOF
+cat > $NODE_HOME/startNode.sh << EOF
 DIRECTORY=$NODE_HOME
 PORT=6000
 HOSTADDR=<IP ADDR>
@@ -24,7 +16,6 @@ CERT=\${DIRECTORY}/node.cert
 cardano-node run --topology \${TOPOLOGY} --database-path \${DB_PATH} --socket-path \${SOCKET_PATH} --host-addr \${HOSTADDR} --port \${PORT} --config \${CONFIG} --shelley-kes-key \${KES} --shelley-vrf-key \${VRF} --shelley-operational-certificate \${CERT}
 EOF
 
-sudo systemctl start cardano-node
+chmod a+x $NODE_HOME/startNode.sh
 
-# Monitor with gLiveView
-./gLiveView.sh
+sudo systemctl start cardano-node

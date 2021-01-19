@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd $NODE_HOME
+cd $HOME/cold-key
 
 cat > poolMetaData.json << EOF
 {
@@ -12,6 +12,3 @@ cat > poolMetaData.json << EOF
 EOF
 
 cardano-cli stake-pool metadata-hash --pool-metadata-file poolMetaData.json > poolMetaDataHash.txt
-
-minPoolCost=$(cat $NODE_HOME/params.json | jq -r .minPoolCost)
-echo minPoolCost: ${minPoolCost}

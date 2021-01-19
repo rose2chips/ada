@@ -9,4 +9,4 @@ cardano-cli stake-address registration-certificate \
     --stake-verification-key-file stake.vkey \
     --out-file stake.cert
 
-toproducer.sh stake.cert ada/cardano-node/
+tonode.sh stake.cert $NODE_HOME/

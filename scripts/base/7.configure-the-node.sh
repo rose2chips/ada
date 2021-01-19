@@ -13,3 +13,21 @@ sed -i ${NODE_CONFIG}-config.json \
 
 echo export CARDANO_NODE_SOCKET_PATH="$NODE_HOME/db/socket" >> $HOME/.bashrc
 source $HOME/.bashrc
+
+cat > $NODE_HOME/${NODE_CONFIG}-topology.json << EOF 
+ {
+    "Producers": [
+      {
+        "addr": "<IP ADDR>",
+        "port": 6000,
+        "valency": 1
+      },
+      {
+        "addr": "relays-new.cardano-mainnet.iohk.io",
+        "port": 3001,
+        "valency": 2
+      }
+    ] }
+EOF
+
+echo FIX ${NODE_HOME}/${NODE_CONFIG}-topology.json
