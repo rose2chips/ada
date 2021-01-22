@@ -16,3 +16,5 @@ sudo systemctl enable prometheus.service
 sudo systemctl enable prometheus-node-exporter.service
 
 #sudo ufw allow from <YOUR IP ADDR> to any port 3000
+
+sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
