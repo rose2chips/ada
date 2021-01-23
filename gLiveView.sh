@@ -666,6 +666,12 @@ while true; do
       [[ ${data} =~ cardano_node_metrics_Forge_adopted_int[[:space:]]([^[:space:]]*) ]] && adopted=${BASH_REMATCH[1]} || adopted=0
       [[ ${data} =~ cardano_node_metrics_Forge_didnt_adopt_int[[:space:]]([^[:space:]]*) ]] && didntadopt=${BASH_REMATCH[1]} || didntadopt=0
       [[ ${data} =~ cardano_node_metrics_Forge_forge_about_to_lead_int[[:space:]]([^[:space:]]*) ]] && about_to_lead=${BASH_REMATCH[1]} || about_to_lead=0
+      [[ ${data} =~ cardano_node_metrics_Forge_node_not_leader_int[[:space:]]([^[:space:]]*) ]] && not_leader=${BASH_REMATCH[1]} || not_leader=0
+      if [[ ${isleader} -eq 0 ]]; then
+        if [[ ${about_to_lead} -gt 0 ]]; then
+          isleader=$((${about_to_lead}-${not_leader}))
+        fi
+      fi
     fi
     if [[ ${about_to_lead} -gt 0 ]]; then
       [[ ${nodemode} != "Core" ]] && clear && nodemode="Core"
