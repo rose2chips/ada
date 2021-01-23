@@ -1,6 +1,5 @@
 #!/bin/bash
 
-mkdir -p $NODE_HOME
 cd $NODE_HOME
 
 NODE_BUILD_NUM=$(curl https://hydra.iohk.io/job/Cardano/iohk-nix/cardano-deployment/latest-finished/download/1/index.html | grep -e "build" | sed 's/.*build\/\([0-9]*\)\/download.*/\1/g')
@@ -16,16 +15,3 @@ sed -i ${NODE_CONFIG}-config.json \
 
 # for Prometheus
 sed -i ${NODE_CONFIG}-config.json -e "s/127.0.0.1/0.0.0.0/g"
-
-cat > $NODE_HOME/${NODE_CONFIG}-topology.json << EOF 
- {
-    "Producers": [
-      {
-        "addr": "relays-new.cardano-mainnet.iohk.io",
-        "port": 3001,
-        "valency": 2
-      }
-    ] }
-EOF
-
-echo FIX ${NODE_HOME}/${NODE_CONFIG}-topology.json
