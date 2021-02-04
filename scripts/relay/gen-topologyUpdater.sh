@@ -53,5 +53,7 @@ cat > crontab-fragment.txt << EOF
 36 * * * * ${NODE_HOME}/topologyUpdater.sh
 EOF
 
-#crontab -l | cat - crontab-fragment.txt >crontab.txt && crontab crontab.txt
+crontab -l | cat - crontab-fragment.txt >> crontab.txt
+
+#crontab -l | cat - crontab-fragment.txt >>crontab.txt && crontab crontab.txt
 #rm crontab-fragment.txt
